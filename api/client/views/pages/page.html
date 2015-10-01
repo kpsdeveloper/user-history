@@ -1,0 +1,90 @@
+<template name="page">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Pages</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <div class="row">
+				  <div class="col-lg-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Add New Page
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <form role="form">
+                                <div class="form-group">
+                                    <label>Name</label>
+                                    <input class="form-control" name="pagename" id="pagename">
+                                </div>
+                                <div class="form-group">
+                                    <label>URL</label>
+                                    <input class="form-control" name="pageurl" id="pageurl">
+                                </div> 
+                                <div class="form-group">
+                                     <label>Category</label>
+                                    <select name="language" id="mySelect" class="form-control">
+                                      <option value="" style="display:none">Select Category</option>
+									  <option value="book">BOOK</option>
+									  <option value="computer">Computer</option>
+                                      <option value="phone">Phone</option>
+                                    </select>
+                                </div> 
+                                <button type="button" id="addpage" class="btn btn-default">Add Page</button>
+                                <button type="reset" class="btn btn-default">Close</button>
+                            </form>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <div class="col-lg-8">
+                   <div class="widget-box">
+			<div class="widget-title">
+				<h2>All Page</h2>
+			</div>
+			<div class="widget-container table-responsive">
+				<table class="table table-hover table-striped order-table table-green">
+				<thead>
+					<tr>
+						
+						<th> Name</th>
+						<th>Url</th>
+						<th>Category</th>
+						
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each allPage}}
+					<tr>
+					
+						<td>{{name}}</td>
+						<td>{{url}}</td>
+                        <td>{{category}}</td>
+						<td>
+							<!-- <button class="btn btn-xs btn-primary" type="button"><i class="glyphicon glyphicon-eye-open"></i>View</button> -->
+							<a href="page/edit/{{_id}}"><button class="btn btn-xs btn-success" type="button"><i class="glyphicon glyphicon-pencil"></i>Edit</button></a>
+							<button class="btn btn-xs btn-danger" type="button" id="remove"><i class="glyphicon glyphicon-remove"></i>Delete</button>
+							
+						</td>
+					</tr>
+					{{/each}}
+					
+				</tbody>
+			</table>	
+			</div>
+		</div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-6 -->
+              
+                <!-- /.col-lg-6 -->
+            </div>
+        </div>
+        <!-- /#page-wrapper -->
+    <!-- /#wrapper -->
+</template>
+

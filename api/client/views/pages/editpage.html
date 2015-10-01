@@ -1,0 +1,50 @@
+<template name="editpage">
+   <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Welcome</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <div class="row">
+				  <div class="col-lg-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Add New Page
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <form role="form">
+                                <div class="form-group">
+                                    <label>Name</label>
+                                    <input class="form-control" name="pagename" id="pagename" value="{{name}}" >
+                                </div>
+                                <div class="form-group">
+                                    <label>URL</label>
+                                    <input class="form-control" name="pageurl" id="pageurl" value="{{url}}">
+                                </div> 
+                                <div class="form-group">
+                                     <label>Category</label>
+                                    <select name="language" id="mySelect" class="form-control">
+                                      <option value="{{categpry}}" style="display:none">{{category}}</option>
+                                      <option value="book">BOOK</option>
+                                      <option value="computer">Computer</option>
+                                      <option value="phone">Phone</option>
+                                    </select>
+                                </div> 
+                                <button type="button" id="updatepage" class="btn btn-default">Update Page</button>
+                                
+                            </form>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                
+              
+                <!-- /.col-lg-6 -->
+            </div>
+        </div>
+        <!-- /#page-wrapper -->
+    <!-- /#wrapper -->
+</template>

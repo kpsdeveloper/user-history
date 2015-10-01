@@ -1,0 +1,97 @@
+<template name="events">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Events System</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            All Events
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Name</th>
+                                            <th>Page</th>
+                                            <th>Time</th>
+                                            <th>Reward Point</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {{#each showevents}}
+                                            <tr>
+                                                <td>#</td>
+                                                <td>{{name}}</td>
+                                                <td>{{pageId}}</td>
+                                                <td>{{time}}</td>
+                                                <td>{{reward_point}}</td>
+                                                <td colspan="3">
+                                                    <a href="/events/view/{{_id}}">View /</a>
+                                                    <a href="#" id="remove">Delete /</a>
+                                                    <a href="/events/edit/{{_id}}">Edit</a>
+                                                </td>
+                                            </tr>
+                                        {{/each}}
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-6 -->
+                <div class="col-lg-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Add New Evens
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <form role="form">
+                                <div class="form-group">
+                                    <label>Name</label>
+                                    <input class="form-control" name="name" id="name">
+                                </div> 
+                                <div class="form-group">
+                                    <label>Time</label>
+                                    <input class="form-control" name="time" id="time">
+                                </div> 
+                                <div class="form-group">
+                                    <label>Reward Point</label>
+                                    <input class="form-control" name="reward" id="reward">
+                                </div> 
+                                <div class="form-group">
+                                     <label>Page</label>
+                                    <select name="page" id="page" class="form-control">
+                                      <option value="" style="display:none">Select Page</option>
+                                      {{#each getpage}}
+                                             <option value="{{_id}}">{{name}}</option>
+                                      {{/each}}
+                                    </select>
+                                </div> 
+                                <button type="submit" id="addevents" class="btn btn-default">Add Event</button>
+                                <button type="reset" class="btn btn-default" id="close">Close</button>
+                            </form>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-6 -->
+            </div>
+        </div>
+        <!-- /#page-wrapper -->
+    <!-- /#wrapper -->
+</template>
+
