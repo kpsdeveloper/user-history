@@ -1,0 +1,30 @@
+<template name="userHistory">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12">
+      <h4 class="page-header">User History</h4>
+		<table class="table table-striped">
+			<thead>
+			<tr>
+				<td>Session ID</td>
+				<td>User ID</td>
+				<td>IP Address</td>
+				<td>Page ID</td>
+				<td>Timestamp</td>
+			</tr>
+			</thead>
+			<tbody>
+			{{#each userHData}}
+			
+				<tr>
+					<td>{{id_session}}</td>
+					<td>{{user_id}}</td>
+					<td>{{ip_address}}</td>
+					<td>{{page_id}}</td>
+					<td>{{timestamp}}</td>
+				</tr>
+			{{/each}}
+			</tbody>
+		</table>
+    </div>
+  </div> <!-- end .row -->
+</template>

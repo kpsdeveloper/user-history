@@ -67,8 +67,8 @@ API = {
       POST: function( context, connection ) {
         // Make sure that our request has data and that the data is valid.
         var hasData   = API.utility.hasData( connection.data ),
-            validData = API.utility.validate( connection.data, { "name": String, "crust": String, "toppings": [ String ] });
-
+        //validData = API.utility.validate( connection.data, { "name": String, "crust": String, "toppings": [ String ] });
+		validData = true;
         if ( hasData && validData ) {
           connection.data.owner = connection.owner;
           var pizza = Pizza.insert( connection.data );
