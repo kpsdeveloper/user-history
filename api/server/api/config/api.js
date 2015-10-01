@@ -67,7 +67,7 @@ API = {
       POST: function( context, connection ) {
         // Make sure that our request has data and that the data is valid.
         var hasData   = API.utility.hasData( connection.data ),
-            validData = API.utility.validate( connection.data, { "name": String, "crust": String, "toppings": [ String ] });
+            validData = API.utility.validate( connection.data, { "id_session": String,"ip_address": String,"page_id": String,"timpestamp": Number });
 
         if ( hasData && validData ) {
           connection.data.owner = connection.owner;
@@ -107,6 +107,31 @@ API = {
           API.utility.response( context, 403, { error: 403, message: "PUT calls must have a pizza ID and at least a name, crust, or toppings passed in the request body in the correct formats (String, String, Array)." } );
         }
       },
+      //======= Start find last data====================
+      FIND: function( context, connection ) {
+        var hasQuery  = API.utility.hasData( connection.data ),
+            validData = API.utility.validate( connection.data, Match.OneOf(
+
+              { "_id": String, "id_session": String, "ip_address": String, "page_id":  String ,"timpestamp": Number }
+            ));
+
+        if ( hasQuery && validData ) {
+          // Save the ID of the pizza we want to update and then sanatize our
+          // data so that it only includes name, crust, and toppings parameters.
+          var historyId = connection.data._id;
+          delete connection.data._id;
+
+          var getlast = user_history.find( { "_id": historyId } ).sort( { "_id" : -1 } ).limit(1);
+
+          if ( getlast ) {
+  
+            API.utility.response( context, 200, { "message": "User History successfully !" } );
+          } else {
+            API.utility.response( context, 404, { "message": "Can't get last user history." } );
+          }
+        }
+      },
+      //======= End find last data======================
       DELETE: function( context, connection ) {
         var hasQuery  = API.utility.hasData( connection.data ),
             validData = API.utility.validate( connection.data, { "_id": String } );
@@ -134,6 +159,7 @@ API = {
           return request.query;
         case "POST":
         case "PUT":
+        case "FIND":
         case "DELETE":
           return request.body;
       }

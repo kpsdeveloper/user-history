@@ -1,0 +1,27 @@
+<template name="commendotion">
+    <div class="container">
+	 <!-- Swiper -->
+    <div class="swiper-container" data-role="page">
+        <div class="swiper-wrapper">
+           {{#each dotion}}
+            <div class="swiper-slide">
+            	   <a href="#"><img class="img-thumbnail" src="upload/{{getImage image}}"><h3>
+                     {{title}}</h3>
+                   </a>
+            </div>
+            
+           {{/each}}
+        </div>
+        <!-- Add Pagination -->
+        <!--<div class="swiper-pagination"></div>-->
+        <!-- Add Arrows -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+</div>
+    <!-- Swiper JS -->
+    <!-- Initialize Swiper -->
+    
+
+
+</template>
